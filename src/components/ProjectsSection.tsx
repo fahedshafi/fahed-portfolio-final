@@ -6,34 +6,44 @@ interface Project {
   number: string;
   category: string;
   name: string;
-  col1Video1: string;
-  col1Video2?: string;
-  col2Video: string;
+  col1Image1: string;
+  col1Image2: string;
+  col2Image: string;
 }
 
 const PROJECTS: Project[] = [
   {
     number: "01",
-    category: "Clients Project",
-    name: "Wirecard Documentary",
-    col1Video1: "/videos/wirecard-trial-30sec.mp4",
-    col1Video2: "/videos/wirecard-consistency.mp4",
-    col2Video: "/videos/wirecard-documentary.mp4",
+    category: "Client Project",
+    name: "Nextlevel Studio",
+    col1Image1:
+      "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85",
+    col1Image2:
+      "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85",
+    col2Image:
+      "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85",
   },
   {
     number: "02",
-    category: "Clients Project",
-    name: "Skillkube",
-    col1Video1: "/videos/skillkube-sgnk-sample.mp4",
-    col1Video2: "/videos/skillkube-essential.mp4",
-    col2Video: "/videos/skillkube-main.mp4",
+    category: "Personal Project",
+    name: "Aura Brand Identity",
+    col1Image1:
+      "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85",
+    col1Image2:
+      "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85",
+    col2Image:
+      "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85",
   },
   {
     number: "03",
-    category: "Clients Project",
-    name: "Shopify Project",
-    col1Video1: "/videos/shopify-documentary-style.mp4",
-    col2Video: "/videos/shopify-main.mp4",
+    category: "Client Project",
+    name: "Solaris Digital",
+    col1Image1:
+      "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85",
+    col1Image2:
+      "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85",
+    col2Image:
+      "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85",
   },
 ];
 
@@ -61,8 +71,6 @@ function ProjectCard({ project, index, totalCards }: ProjectCardProps) {
 
   // Translate slightly on stacking for added depth
   const y = useTransform(scrollYProgress, [0, 1], [0, index * -5]);
-
-  const hasSecondClip = Boolean(project.col1Video2);
 
   return (
     <div
@@ -97,67 +105,51 @@ function ProjectCard({ project, index, totalCards }: ProjectCardProps) {
           {/* Live project button */}
           <div className="shrink-0 self-start sm:self-center">
             <LiveProjectButton
-              onClick={() => window.open(project.col2Video, "_blank")}
+              onClick={() => window.open(project.col2Image, "_blank")}
             />
           </div>
         </div>
 
-        {/* Bottom row: Dynamic Two-column Video Grid */}
+        {/* Bottom row: Dynamic Two-column Image Grid */}
         <div className="flex gap-4 md:gap-6 items-stretch w-full flex-1 mt-4 md:mt-6 overflow-hidden">
           {/* Left Column (40% width) */}
-          <div
-            className={`w-[40%] flex flex-col gap-4 md:gap-6 h-full ${
-              hasSecondClip ? "justify-between" : "justify-center"
-            }`}
-          >
-            {/* Left Top Video */}
+          <div className="w-[40%] flex flex-col gap-4 md:gap-6 justify-between h-full">
+            {/* Left Top Image */}
             <div
-              style={{ height: hasSecondClip ? "clamp(100px, 14vw, 230px)" : "100%" }}
+              style={{ height: "clamp(100px, 14vw, 230px)" }}
               className="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] overflow-hidden bg-neutral-900"
             >
-              <video
-                src={project.col1Video1}
-                aria-label={`${project.name} clip one`}
+              <img
+                src={project.col1Image1}
+                alt={`${project.name} top item`}
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
+                loading="lazy"
               />
             </div>
-            {/* Left Bottom Video (only if a second clip exists) */}
-            {hasSecondClip && (
-              <div
-                style={{ height: "clamp(120px, 18vw, 340px)" }}
-                className="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] overflow-hidden flex-1 bg-neutral-900"
-              >
-                <video
-                  src={project.col1Video2}
-                  aria-label={`${project.name} clip two`}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                />
-              </div>
-            )}
+            {/* Left Bottom Image */}
+            <div
+              style={{ height: "clamp(120px, 18vw, 340px)" }}
+              className="w-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] overflow-hidden flex-1 bg-neutral-900"
+            >
+              <img
+                src={project.col1Image2}
+                alt={`${project.name} bottom item`}
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
+              />
+            </div>
           </div>
 
-          {/* Right Column (60% width) - Main Showcase Video */}
+          {/* Right Column (60% width) - Tall Image */}
           <div className="w-[60%] rounded-[30px] sm:rounded-[40px] md:rounded-[50px] overflow-hidden bg-neutral-900 h-full">
-            <video
-              src={project.col2Video}
-              aria-label={`${project.name} main showcase`}
-              className="w-full h-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              controls
-              preload="metadata"
+            <img
+              src={project.col2Image}
+              alt={`${project.name} main showcase`}
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              loading="lazy"
             />
           </div>
         </div>

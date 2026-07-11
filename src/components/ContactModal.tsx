@@ -26,7 +26,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       setSubmitted(true);
       
       // Save to localStorage so submissions are persistent and accessible
-      const currentSubmissions = JSON.parse(localStorage.getItem("fahed_contact_submissions") || "[]");
+      const currentSubmissions = JSON.parse(localStorage.getItem("jack_contact_submissions") || "[]");
       const newSubmission = {
         id: Date.now(),
         name,
@@ -36,7 +36,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         date: new Date().toLocaleDateString(),
       };
       localStorage.setItem(
-        "fahed_contact_submissions",
+        "jack_contact_submissions",
         JSON.stringify([newSubmission, ...currentSubmissions])
       );
     }, 1200);
@@ -116,7 +116,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="fahed@example.com"
+                    placeholder="jack@example.com"
                     className="w-full bg-[#141414] border border-[#D7E2EA]/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#D7E2EA] transition-colors placeholder-[#D7E2EA]/30"
                   />
                 </div>
@@ -189,7 +189,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   Message Transmitted!
                 </h3>
                 <p className="text-[#D7E2EA]/70 text-sm font-light max-w-sm">
-                  Thanks, <strong className="text-white">{name}</strong>. Fahed has received your 
+                  Thanks, <strong className="text-white">{name}</strong>. Jack has received your 
                   proposal for <strong className="text-white uppercase">{(projectType || "").replace("-", " ")}</strong>.
                   We&apos;ll look it over and reply to <strong className="text-white">{email}</strong> within 24 hours.
                 </p>

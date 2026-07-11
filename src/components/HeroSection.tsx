@@ -41,7 +41,7 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
         className="relative z-30 w-full flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8"
       >
         <div className="text-xl font-bold tracking-tighter text-[#D7E2EA] select-none">
-          FAHED&mdash;
+          JACK&mdash;
         </div>
         <div className="flex gap-6 md:gap-12 text-sm font-medium uppercase tracking-widest">
           <button
@@ -49,6 +49,12 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
             className="text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.1rem] transition-opacity duration-200 hover:opacity-70 cursor-pointer"
           >
             About
+          </button>
+          <button
+            onClick={() => handleScrollTo("services")}
+            className="text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.1rem] transition-opacity duration-200 hover:opacity-70 cursor-pointer"
+          >
+            Price
           </button>
           <button
             onClick={() => handleScrollTo("projects")}
@@ -70,7 +76,7 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
         <div className="overflow-hidden w-full text-center">
           <FadeIn y={40} delay={0.15}>
             <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-6 sm:mt-4 md:-mt-5 select-none">
-              im fahed
+              Hi, i&apos;m jack
             </h1>
           </FadeIn>
         </div>
@@ -88,13 +94,23 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
           >
             <img
               src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
-              alt="Fahed Portrait"
+              alt="Jack Portrait"
               referrerPolicy="no-referrer"
               className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
               loading="eager"
             />
           </Magnet>
         </FadeIn>
+      </div>
+
+      {/* Immersive UI Ambient Corner Indicator Overlay */}
+      <div className="absolute bottom-24 left-10 opacity-20 hidden md:block select-none z-0">
+        <div className="flex flex-col gap-1.5">
+          <span className="text-3xl font-black text-[#D7E2EA]">01</span>
+          <span className="text-[10px] tracking-[0.3em] uppercase text-[#D7E2EA] font-semibold">
+            Nextlevel Studio
+          </span>
+        </div>
       </div>
 
       {/* Ambient background objects */}
