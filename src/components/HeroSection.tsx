@@ -51,12 +51,6 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
             About
           </button>
           <button
-            onClick={() => handleScrollTo("services")}
-            className="text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.1rem] transition-opacity duration-200 hover:opacity-70 cursor-pointer"
-          >
-            Price
-          </button>
-          <button
             onClick={() => handleScrollTo("projects")}
             className="text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.1rem] transition-opacity duration-200 hover:opacity-70 cursor-pointer"
           >
@@ -76,7 +70,7 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
         <div className="overflow-hidden w-full text-center">
           <FadeIn y={40} delay={0.15}>
             <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-6 sm:mt-4 md:-mt-5 select-none">
-              Hi, i&apos;m fahed
+              im fahed
             </h1>
           </FadeIn>
         </div>
@@ -101,16 +95,6 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
             />
           </Magnet>
         </FadeIn>
-      </div>
-
-      {/* Immersive UI Ambient Corner Indicator Overlay */}
-      <div className="absolute bottom-24 left-10 opacity-20 hidden md:block select-none z-0">
-        <div className="flex flex-col gap-1.5">
-          <span className="text-3xl font-black text-[#D7E2EA]">01</span>
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[#D7E2EA] font-semibold">
-            Nextlevel Studio
-          </span>
-        </div>
       </div>
 
       {/* Ambient background objects */}

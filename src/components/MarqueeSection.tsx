@@ -1,28 +1,47 @@
 import React, { useRef, useState, useEffect } from "react";
 
-const IMAGES = [
-  "https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif",
-  "https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif",
-  "https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif",
-  "https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif",
-  "https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif",
-  "https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif",
-  "https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif",
-  "https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif",
-  "https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif",
-  "https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif",
-  "https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif",
-  "https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif",
-  "https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif",
-  "https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif",
-  "https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif",
-  "https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif",
-  "https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif",
-  "https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif",
-  "https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif",
-  "https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif",
-  "https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif",
+const VIDEOS = [
+  "/videos/wirecard-documentary.mp4",
+  "/videos/wirecard-trial-30sec.mp4",
+  "/videos/wirecard-consistency.mp4",
+  "/videos/skillkube-main.mp4",
+  "/videos/skillkube-sgnk-sample.mp4",
+  "/videos/skillkube-essential.mp4",
+  "/videos/shopify-main.mp4",
+  "/videos/shopify-documentary-style.mp4",
 ];
+
+function VideoTile({ src, label }: { src: string; label: string; key?: any }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) videoRef.current.muted = false;
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) videoRef.current.muted = true;
+  };
+
+  return (
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="w-[420px] h-[270px] shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800/50"
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        aria-label={label}
+        className="w-full h-full object-cover pointer-events-none"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+    </div>
+  );
+}
 
 export function MarqueeSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -55,20 +74,20 @@ export function MarqueeSection() {
     };
   }, []);
 
-  // Row 1: first 11 images (indices 0 to 10), tripled
-  const row1ImagesOriginal = IMAGES.slice(0, 11);
-  const row1Images = [
-    ...row1ImagesOriginal,
-    ...row1ImagesOriginal,
-    ...row1ImagesOriginal,
+  // Row 1: first 4 videos, tripled
+  const row1VideosOriginal = VIDEOS.slice(0, 4);
+  const row1Videos = [
+    ...row1VideosOriginal,
+    ...row1VideosOriginal,
+    ...row1VideosOriginal,
   ];
 
-  // Row 2: remaining 10 images (indices 11 to 20), tripled
-  const row2ImagesOriginal = IMAGES.slice(11);
-  const row2Images = [
-    ...row2ImagesOriginal,
-    ...row2ImagesOriginal,
-    ...row2ImagesOriginal,
+  // Row 2: remaining 4 videos, tripled
+  const row2VideosOriginal = VIDEOS.slice(4);
+  const row2Videos = [
+    ...row2VideosOriginal,
+    ...row2VideosOriginal,
+    ...row2VideosOriginal,
   ];
 
   // Row 1 translation: moves RIGHT on scroll: translateX(offset - 200)
@@ -79,6 +98,7 @@ export function MarqueeSection() {
 
   return (
     <section
+      id="projects"
       ref={sectionRef}
       className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden w-full select-none"
     >
@@ -93,19 +113,8 @@ export function MarqueeSection() {
             }}
             className="flex gap-3 whitespace-nowrap"
           >
-            {row1Images.map((src, i) => (
-              <div
-                key={`row1-${i}`}
-                className="w-[420px] h-[270px] shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800/50"
-              >
-                <img
-                  src={src}
-                  alt={`Portfolio preview Row 1 Tile ${i}`}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover rounded-2xl pointer-events-none"
-                  loading="lazy"
-                />
-              </div>
+            {row1Videos.map((src, i) => (
+              <VideoTile key={`row1-${i}`} src={src} label={`Portfolio preview Row 1 Tile ${i}`} />
             ))}
           </div>
         </div>
@@ -120,19 +129,8 @@ export function MarqueeSection() {
             }}
             className="flex gap-3 whitespace-nowrap"
           >
-            {row2Images.map((src, i) => (
-              <div
-                key={`row2-${i}`}
-                className="w-[420px] h-[270px] shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800/50"
-              >
-                <img
-                  src={src}
-                  alt={`Portfolio preview Row 2 Tile ${i}`}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover rounded-2xl pointer-events-none"
-                  loading="lazy"
-                />
-              </div>
+            {row2Videos.map((src, i) => (
+              <VideoTile key={`row2-${i}`} src={src} label={`Portfolio preview Row 2 Tile ${i}`} />
             ))}
           </div>
         </div>
